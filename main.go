@@ -20,9 +20,9 @@ func main() {
 	}
 
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/save", hr.Save)
-	router.HandleFunc("/get-original", hr.GetOriginal)
-	router.HandleFunc("/get-info", hr.GetInfo)
+	router.HandleFunc("/save", hr.Save).Methods("POST")
+	router.HandleFunc("/get-original", hr.GetOriginal).Methods("POST")
+	router.HandleFunc("/get-info", hr.GetInfo).Methods("POST")
 	router.HandleFunc("/sh/{short}", hr.Redirect)
 
 	logger.Info("http server started!")

@@ -49,7 +49,7 @@ func (h *HttpHandler) Redirect(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	org, err := h.Store.GetOriginal(r.Context(), vars["short"])
 	if err != nil {
-		_ = json.NewEncoder(w).Encode(h.makeResp("save", nil, err))
+		_ = json.NewEncoder(w).Encode(h.makeResp("Redirect", nil, err))
 		return
 	}
 	http.Redirect(w, r, org, http.StatusPermanentRedirect)
